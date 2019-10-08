@@ -84,7 +84,7 @@ string ReplaceExclamation(string x)
         if(x.at(i) == ch1)
         {
 
-            x.replace(i, 1,1, ch2);
+            x.replace(i, 1,1, ch2); //fixed
 
         }
 
