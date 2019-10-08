@@ -89,7 +89,7 @@ string ReplaceExclamation(string x)
         }
 
     }
-
+    return x;
 }
 
 //my other function
@@ -116,7 +116,7 @@ string ShortenSpace(string x)
         }
     }
 
-
+return x;
 
 }
 int main(){
