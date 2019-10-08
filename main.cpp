@@ -13,7 +13,7 @@
 using namespace std;
 void GetNumOfNonWSCharacters(string x);
 void GetNumOfWords(string x);
-string ReplaceExclamation(string x); //pre-declaration
+string ReplaceExclamation(string x); //pre-declaration e
 string ShortenSpace(string x);
 
 void PrintMenu(string x){
