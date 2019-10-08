@@ -10,8 +10,10 @@ using namespace std;
 void GetNumOfNonWSCharacters(string x);
 void GetNumOfWords(string x);
 void FindText(string x, string y);
+string ReplaceExclamation(string x); //pre-declaration
+string ShortenSpace(string x);
 
-void PrintMenu(string x){
+char PrintMenu(string x){
     string q;
     cout << "MENU" << endl << "c - Number of non-whitespace characters" << endl << "w - Number of words" << endl << "f - Find text" << endl;
     cout << "r - Replace all !'s"  << endl << "s - Shorten spaces"  << endl << "q - Quit"  << endl << "Choose an option:" << endl;
@@ -27,16 +29,19 @@ void PrintMenu(string x){
         case 'f':
             cout << "Enter a word or phrase to be found:";
             cin.ignore();
-            cin >> q;
-            FindText(x,q);
+            getline(cin, q);
+            FindText(q,x);
             break;
         case 'r':
+            cout << "Edited text: " << ReplaceExclamation(x) << endl;
             break;
         case 's':
+            cout << "Edited text: " << ShortenSpace(x) << endl;
             break;
         case 'q':
             break;
     }
+    return choice;
 }
 void GetNumOfNonWSCharacters(string x){
     int ws = 0;
@@ -56,22 +61,74 @@ void GetNumOfWords(string x){
     }
     cout << "Number of words: " << w << endl;
 }
-void FindText(string x, string y){
-    cout << endl;
-    int z, fond;
-    z = x.find(y);
+void FindText(string q, string x){
+
+    int z, found = 0;
+    z = x.find(q);
     while (z != string::npos){              // My code was messed up here. I was in the middle of trying to fix it
-        fond++;                                //  but ill leave it to ya
-        x.find(y,z);
+        found++;                                //  but ill leave it to ya
+        z = x.find(q,z + 1);
     }
-    cout << fond;
+    cout << "\"" << q << "\" instances: " << found << endl;
+}
+string ReplaceExclamation(string x)
+{
+
+    char ch1 = '!';
+    char ch2 = '.';
+
+
+    for(int i = 0; i < x.length(); ++i)
+    {
+
+        if(x.at(i) == ch1)
+        {
+
+            x.replace(i, 1,1, ch2);
+
+        }
+
+    }
+
+}
+
+//my other function
+string ShortenSpace(string x)
+{
+
+
+    char ch1 = ' ' ;
+
+
+    for(int i = 0; i < x.length(); ++i)
+    {
+
+        if(x.at(i) == ch1)
+        {
+
+            if(x.at(i+1) == ch1)
+            {
+
+              //  x.replace(i, 2, ch1);
+                x.replace(i,2,1,ch1);
+            }
+
+        }
+    }
+
+
+
 }
 int main(){
+    char menuChoice = 'a';
 
     cout << "Enter a sample text:" << endl;
     string word;
     getline(cin, word);
     cout << endl << "You entered: " << word << endl;
-    PrintMenu(word);
+    while(menuChoice != 'q') {
+        menuChoice = PrintMenu(word);
+    }
+
     return 0;
 }
