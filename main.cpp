@@ -1,6 +1,10 @@
 //
 //  main.cpp
 //  
+//  Member 1:
+//  Member 2:
+//  Member 3:
+//  Member 4: DCamp4
 //
 //  Created by William Smith on 10/2/19.
 //
@@ -10,6 +14,8 @@ using namespace std;
 void GetNumOfNonWSCharacters(string x);
 void GetNumOfWords(string x);
 void FindText(string x, string y);
+void ReplaceExclamation(string x); //pre-declaration
+void ShortenSpace(string x);
 
 void PrintMenu(string x){
     string q;
@@ -31,8 +37,10 @@ void PrintMenu(string x){
             FindText(x,q);
             break;
         case 'r':
+            ReplaceExclamation(x);
             break;
         case 's':
+            ShortenSpace(x);
             break;
         case 'q':
             break;
@@ -66,6 +74,60 @@ void FindText(string x, string y){
     }
     cout << fond;
 }
+
+
+//My, DCamp4's function.
+void ReplaceExclamation(string x)
+{
+
+    char ch1 = "!";
+    char ch2 = ".";
+
+
+    for(int i = 0; i < x.length(); ++i)
+    {
+
+        if(x.at(i) == ch1)
+        {
+
+            x.replace(i, 1, ch2);
+
+        }
+
+    }
+
+}
+
+//my other function
+void ShortenSpace(string x)
+{
+
+
+    char ch1 = " ";
+
+
+    for(int i = 0; i < x.length(); ++i)
+    {
+
+        if(x.at(i) == ch1)
+        {
+
+            if(x.at(i+1) == ch1)
+            {
+
+                x.replace(i, 2, ch1);
+
+            }
+
+        }
+
+    }
+
+
+
+}
+
+
 int main(){
 
     cout << "Enter a sample text:" << endl;
