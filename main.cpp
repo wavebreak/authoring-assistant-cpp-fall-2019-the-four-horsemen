@@ -13,9 +13,8 @@
 using namespace std;
 void GetNumOfNonWSCharacters(string x);
 void GetNumOfWords(string x);
-void FindText(string x, string y);
-void ReplaceExclamation(string x); //pre-declaration
-void ShortenSpace(string x);
+string ReplaceExclamation(string x); //pre-declaration
+string ShortenSpace(string x);
 
 void PrintMenu(string x){
     string q;
@@ -34,13 +33,13 @@ void PrintMenu(string x){
             cout << "Enter a word or phrase to be found:";
             cin.ignore();
             cin >> q;
-            FindText(x,q);
             break;
         case 'r':
-            ReplaceExclamation(x);
+
+            cout << "Edited text: " << ReplaceExclamation(x) << endl;
             break;
         case 's':
-            ShortenSpace(x);
+            cout << "Edited text: " << ShortenSpace(x) << endl;
             break;
         case 'q':
             break;
@@ -64,24 +63,14 @@ void GetNumOfWords(string x){
     }
     cout << "Number of words: " << w << endl;
 }
-void FindText(string x, string y){
-    cout << endl;
-    int z, fond;
-    z = x.find(y);
-    while (z != string::npos){              // My code was messed up here. I was in the middle of trying to fix it
-        fond++;                                //  but ill leave it to ya
-        x.find(y,z);
-    }
-    cout << fond;
-}
 
 
-//My, DCamp4's function.
-void ReplaceExclamation(string x)
+//My, DCamp4's function...
+string ReplaceExclamation(string x)
 {
 
-    char ch1 = "!";
-    char ch2 = ".";
+    char ch1 = '!';
+    char ch2 = '.';
 
 
     for(int i = 0; i < x.length(); ++i)
@@ -90,20 +79,22 @@ void ReplaceExclamation(string x)
         if(x.at(i) == ch1)
         {
 
-            x.replace(i, 1, ch2);
 
+            x.replace(i, 1, 1, ch2);
         }
 
     }
 
+    return x;
+
 }
 
 //my other function
-void ShortenSpace(string x)
+string ShortenSpace(string x)
 {
 
 
-    char ch1 = " ";
+    char ch1 = ' ';
 
 
     for(int i = 0; i < x.length(); ++i)
@@ -115,14 +106,14 @@ void ShortenSpace(string x)
             if(x.at(i+1) == ch1)
             {
 
-                x.replace(i, 2, ch1);
+                x.replace(i, 2, 1, ch1);
 
             }
 
         }
 
     }
-
+        return x;
 
 
 }
